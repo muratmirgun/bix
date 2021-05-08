@@ -1,0 +1,4 @@
+github.com/MuratSs/assert v0.0.0-20201124223531-7c745072e7b5 h1:XA9ftnOQqJ1MXr4hsyWVT3+ChI3vV/eM+/7kdwApYJI=
+github.com/MuratSs/assert v0.0.0-20201124223531-7c745072e7b5/go.mod h1:A7d517IgXOSZge3FfpKDLN3m3e3CU+j96Q839sDdLTg=
+github.com/muratmirgun/logger-go v0.0.0-20210110144537-cacc996fe53f h1:s63hEOQTMz0a863A+MrdtF2/D1pZRTptcluC9s+k53g=
+github.com/muratmirgun/logger-go v0.0.0-20210110144537-cacc996fe53f/go.mod h1:bdOm2pNaEe8NPFuTdYgyKh8Yv9xdAg1r1UaaCXDEFus=

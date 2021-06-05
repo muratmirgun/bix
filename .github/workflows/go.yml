@@ -1,41 +1,32 @@
-name: Codecov
-on: [push]
+name: golangci-lint
+on:
+  push:
+    branches:
+      - main
+      - dev
 jobs:
-  run:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    env:
-      OS: ${{ matrix.os }}
+  build:
+    runs-on: ubuntu-latest
     steps:
-
-      - name: Set up Go 1.12
-        uses: actions/setup-go@v1
+      - name: Set up Go 1.16
+        uses: actions/setup-go@v2
         with:
-          go-version: 1.12
+          go-version: 1.16
         id: go
-
       - name: Check out code into the Go module directory
-        uses: actions/checkout@v1
-
+        uses: actions/checkout@v2
       - name: Get dependencies
         run: |
           go get -v -t -d ./...
           if [ -f Gopkg.toml ]; then
-              curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-              dep ensure
+             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+             dep ensure
           fi
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage1.xml,./coverage2.xml
-          directory: ./coverage/reports/
-          flags: unittests
-          env_vars: OS
-          name: codecov-umbrella
-          fail_ci_if_error: true
-          path_to_write_report: ./coverage/codecov_report.txt
-          verbose: true
+      - name: Build Project
+        run: go build -v ./cmd/
+      - name: Run Tests
+        run: go test -v ./...
+      - name: Get golangci-lint
+        run: wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.38.0
+      - name: Run linter
+        run: ./bin/golangci-lint run --out-format=line-number --timeout=15m

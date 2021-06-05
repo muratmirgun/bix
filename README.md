@@ -1,6 +1,6 @@
 # Bix Modern Golang Web Framework (the under construction!!!)
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/muratmirgun/bix)](https://goreportcard.com/report/github.com/muratmirgun/bix)
+[![codecov](https://codecov.io/gh/muratmirgun/bix/branch/main/graph/badge.svg?token=U9CJPPIVE6)](https://codecov.io/gh/muratmirgun/bix)
 [![GoDoc](https://pkg.go.dev/badge/github.com/muratmirgun/bix?status.svg)](https://pkg.go.dev/github.com/muratmirgun/bix?tab=doc)
 <a href="https://github.com/muratmirgun/bix/issues">
       <img alt="Issues" src="https://img.shields.io/github/issues/muratmirgun/bix?color=0088ff" />

@@ -1,4 +1,4 @@
-module bix
+module github.com/muratmirgun/bix
 
 go 1.16
 

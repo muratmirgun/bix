@@ -1,10 +1,13 @@
-name: codecov
+name: Codecov
 on: [push]
 jobs:
-
-  codecov:
-    name: codecov
-    runs-on: ubuntu-latest
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    env:
+      OS: ${{ matrix.os }}
     steps:
 
       - name: Set up Go 1.12
@@ -24,14 +27,15 @@ jobs:
               dep ensure
           fi
 
-      - name: Generate coverage report
-        run: |
-          go test `go list ./... | grep -v examples` -coverprofile=coverage.txt -covermode=atomic
-
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v1.0.2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.txt
+          files: ./coverage1.xml,./coverage2.xml
+          directory: ./coverage/reports/
           flags: unittests
+          env_vars: OS
           name: codecov-umbrella
+          fail_ci_if_error: true
+          path_to_write_report: ./coverage/codecov_report.txt
+          verbose: true

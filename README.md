@@ -12,13 +12,12 @@
 <br />
 <p align="center">
   <a href="https://github.com/muratmirgun/bix">
-    <img src="img/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="100" height="120">
   </a>
 
 <h3 align="center">Bix Modern Web Framework</h3>
 
   <p align="center">
-   
     <br />
     <a href="https://github.com/muratmirgun/bix"><strong>Explore the docs »</strong></a>
     <br />
